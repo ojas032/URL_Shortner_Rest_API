@@ -42,6 +42,17 @@ app.get('/short/:short',(req,res)=>{
     
 })
 
+
+app.get('/open/:short',(req,res)=>{
+    const code=req.params.short;
+    shortner.expand(code).then((result)=>{
+        res.render('redirect')
+        console.log(result)
+    }).catch((error)=>{
+        console.log(error);
+    })
+})
+
 app.post('/expand',(req,res)=>{
     console.log(req.body.url)
     var url=""
